@@ -12,13 +12,13 @@ else
     GITHUB_DOMAIN="https://github.com"
 fi
 
- git clone $GITHUB_DOMAIN/$ORG_NAME/$FORK
+ git clone $GITHUB_DOMAIN/$ORG/$FORK
 
 # cd into the fork
 cd $FORK
 
 # Add the upstream
-git remote add upstream "$GITHUB_DOMAIN/$ORG_NAME/$REPO_NAME"
+git remote add upstream "$GITHUB_DOMAIN/$ORG/$REPO.git"
 
 # #list remotes
 git remote -v
@@ -67,17 +67,17 @@ for CONFLICT in $CONFLICTS; do
 done
 
 # #create a merge branch for the pr
-git checkout -b "merge-$REF_NAME"
+git checkout -b "merge-$REF"
 
 # # Commit the changes
 git commit -am "Merge upstream" --allow-empty
 
 # # Push the changes
-git push --set-upstream origin "merge-$REF_NAME"
+git push --set-upstream origin "merge-$REF"
 
 # # create a pr
-echo "creating a PR for merge-$REF_NAME"
-gh pr create --repo $GITHUB_DOMAIN/$ORG_NAME/$FORK --title "Merge upstream" --body "todo update this w template"
+echo "creating a PR for merge-$REF"
+gh pr create --repo $GITHUB_DOMAIN/$ORG/$FORK --title "Merge upstream" --body "todo update this w template"
 
 # echo "No conflicts auto merging pr"
 # # auto merge if its a template
