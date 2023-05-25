@@ -9,8 +9,8 @@ OWNER=$6
 REPO=$7
 REF=$8
 
-echo "Token $1"
-echo "Never Overwrite $2"
-echo "Always Overwrite $3"
-time=$(date)
-echo "time=$time" >> $GITHUB_OUTPUT
+echo $OWNER is the org name
+echo $REPO is the repo name
+echo $REF is the ref name
+echo run as $USER_NAME $USER_EMAIL
+
