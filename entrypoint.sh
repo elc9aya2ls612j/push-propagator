@@ -10,7 +10,7 @@ OWNER=$6
 REPO=$(echo $7 | cut -d'/' -f 2)
 REF=$8
 
-source scripts/build.sh
+source /scripts/build.sh
 
 cd parent
 FORKS=$(gh repo list $ORG_NAME --json parent,name -q '.[] | select(.parent != null and .parent.name == "'$REPO_NAME'") | .name')
