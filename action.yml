@@ -11,6 +11,22 @@ inputs:
   ALWAYS_OVERWRITE: 
     description: 'Files that should always be overwritten, i.e. local changes should be discarded'
     default: src/lib-franklin.js
+  USER_NAME:
+    description: 'User name to be used for git commit'
+    required: true
+  USER_EMAIL:
+    description: 'User email to be used for git commit'
+    required: true
+  OWNER:
+    description: 'Owner of the current repository'
+    required: true
+  REPO:
+    description: 'Current repository'
+    required: true
+  REF:
+    description: 'Branch to be pushed from'
+    required: true
+    default: 'main'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -21,3 +37,8 @@ runs:
     - ${{ inputs.GITHUB_TOKEN }}
     - ${{ inputs.NEVER_OVERWRITE }}
     - ${{ inputs.ALWAYS_OVERWRITE }}
+    - ${{ inputs.USER_NAME }}
+    - ${{ inputs.USER_EMAIL }}
+    - ${{ inputs.OWNER }}
+    - ${{ inputs.REPO }}
+    - ${{ inputs.REF }}
