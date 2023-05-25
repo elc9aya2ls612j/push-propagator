@@ -7,7 +7,7 @@ USER_NAME=$4
 USER_EMAIL=$5
 ORG=$(echo $GITHUB_REPOSITORY | cut -d / -f 1)
 REPO=$(echo $GITHUB_REPOSITORY | cut -d / -f 2)
-REF=$8
+REF=$(git rev-parse --short HEAD)
 
 echo ENV VARS
 env
