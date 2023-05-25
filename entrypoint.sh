@@ -10,6 +10,13 @@ OWNER=$6
 REPO=$(echo $7 | cut -d'/' -f 2)
 REF=$8
 
+echo ENV VARS
+env
+
+echo GitHub CLI version
+which gh
+gh --version
+
 source /scripts/build.sh
 
 cd parent
