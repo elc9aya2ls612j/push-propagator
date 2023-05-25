@@ -17,6 +17,8 @@ echo GitHub CLI version
 which gh
 gh --version
 
+echo $GITHUB_TOKEN | gh auth login --with-token
+
 source /scripts/build.sh
 
 cd parent
