@@ -1,11 +1,16 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Push Propagator'
+description: 'Propagates changes from one repository to another, while keeping some local changes'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  GITHUB_TOKEN:
+    description: 'GITHUB_TOKEN to be used to checkout code'
     required: true
-    default: 'World'
+  NEVER_OVERWRITE: 
+    description: 'Files that should never be overwritten, i.e. local changes should be kept'
+    default: README.md src/theme.css fstab.yaml
+  ALWAYS_OVERWRITE: 
+    description: 'Files that should always be overwritten, i.e. local changes should be discarded'
+    default: src/lib-franklin.js
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -13,4 +18,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.GITHUB_TOKEN }}
+    - ${{ inputs.NEVER_OVERWRITE }}
+    - ${{ inputs.ALWAYS_OVERWRITE }}
