@@ -5,7 +5,7 @@ FROM alpine:3.10
 COPY entrypoint.sh /entrypoint.sh
 
 # Install gh, curl, jq, bash, git, openssh
-RUN apk add --no-cache curl jq bash git openssh gh
+RUN apk add --no-cache curl jq bash git openssh github-cli
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
