@@ -18,6 +18,7 @@ which gh
 gh --version
 
 echo $GITHUB_TOKEN | gh auth login --with-token
+gh auth status
 
 source /scripts/build.sh
 
