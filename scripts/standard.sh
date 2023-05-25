@@ -57,10 +57,12 @@ CONFLICTS=$(git diff --name-only --diff-filter=U)
 for CONFLICT in $CONFLICTS; do
     echo we have a confict $CONFLICT
     # If the file is in $NEVER_OVERWRITE, skip it
-    if [[ $NEVER_OVERWRITE =~ (^|[[:space:]])$CONFLICT($|[[:space:]]) ]]; then
-        echo $CONFLICT is in NEVER_OVERWRITE, skipping
-        continue
-    fi
+    for FILE in $NEVER_OVERWRITE; do
+        if [[ $CONFLICT == $FILE ]]; then
+            echo $CONFLICT is in NEVER_OVERWRITE, skipping
+            continue 2
+        fi
+    done
     echo $CONFLICT is not in NEVER_OVERWRITE, using upstream
     # Checkout the upstream version
     git checkout --theirs $CONFLICT
