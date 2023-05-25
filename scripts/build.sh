@@ -10,4 +10,4 @@ git config --global user.email "$USER"
 
 mkdir parent
 # checkout the parent repo
-git clone https://$GITHUB_TOKEN@github.com/$OWNER/$REPO.git parent
+git clone https://$GITHUB_TOKEN@github.com/$ORG/$REPO.git parent

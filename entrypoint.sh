@@ -22,16 +22,16 @@ gh auth status
 source /scripts/build.sh
 
 cd parent
-FORKS=$(gh repo list $ORG_NAME --json parent,name -q '.[] | select(.parent != null and .parent.name == "'$REPO_NAME'") | .name')
+FORKS=$(gh repo list $ORG --json parent,name -q '.[] | select(.parent != null and .parent.name == "'$REPO'") | .name')
 echo "We have these forks: $FORKS"
 
 # Loop through the forks
 for FORK in $FORKS; do
     echo $FORK is the current fork
     # if the fork is a custom
-    if gh api /repos/$ORG_NAME/$FORK/topics --jq ".names" | grep -q custom; then
-        source $SCRIPTS_PATH/custom.sh
+    if gh api /repos/$ORG/$FORK/topics --jq ".names" | grep -q custom; then
+        source /scripts/custom.sh
     else
-        source $SCRIPTS_PATH/standard.sh
+        source /scripts/standard.sh
     fi
 done
