@@ -5,9 +5,8 @@ NEVER_OVERWRITE=$2
 ALWAYS_OVERWRITE=$3
 USER_NAME=$4
 USER_EMAIL=$5
-OWNER=$6
-# take owner/rep and keep only the repo
-REPO=$(echo $7 | cut -d'/' -f 2)
+ORG=$(echo $GITHUB_REPOSITORY | cut -d / -f 1)
+REPO=$(echo $GITHUB_REPOSITORY | cut -d / -f 2)
 REF=$8
 
 echo ENV VARS
