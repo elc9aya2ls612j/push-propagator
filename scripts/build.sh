@@ -2,7 +2,6 @@
 
 echo $ORG is the org name
 echo $REPO is the repo name
-echo $REF is the ref name
 echo run as $USER_NAME $USER_EMAIL
 
 git config --global user.name "$USER"

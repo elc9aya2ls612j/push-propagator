@@ -24,6 +24,8 @@ cd parent
 
 REF=$(git rev-parse --short HEAD)
 
+echo $REF is the ref name
+
 FORKS=$(gh repo list $ORG --json parent,name -q '.[] | select(.parent != null and .parent.name == "'$REPO'") | .name')
 echo "We have these forks: $FORKS"
 
