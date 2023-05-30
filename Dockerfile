@@ -8,7 +8,6 @@ COPY entrypoint.sh /entrypoint.sh
 RUN mkdir /scripts
 
 # Copy all the scripts
-COPY scripts/build.sh /scripts/build.sh
 COPY scripts/custom.sh /scripts/custom.sh
 COPY scripts/standard.sh /scripts/standard.sh
 
