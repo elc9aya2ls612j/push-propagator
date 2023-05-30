@@ -1,18 +1,11 @@
 #!/bin/bash
 
-echo running the standard script
-
-echo $FORK is a Standard site
+echo running the standard update script for $FORK
 
 # Clone the fork
-if [ ! -z "$GITHUB_TOKEN" ]
-then
-    GITHUB_DOMAIN="https://$GITHUB_TOKEN@github.com"
-else
-    GITHUB_DOMAIN="https://github.com"
-fi
+GITHUB_DOMAIN="https://$GITHUB_TOKEN@github.com"
 
- git clone $GITHUB_DOMAIN/$ORG/$FORK
+git clone $GITHUB_DOMAIN/$ORG/$FORK
 
 # cd into the fork
 cd $FORK
@@ -88,5 +81,5 @@ gh pr create --repo $GITHUB_DOMAIN/$ORG/$FORK --title "Merge upstream" --body "t
 # # fi
 
 # Go back to the parent repo
-# cd .. && rm -rf $FORK
+cd .. && rm -rf $FORK
 

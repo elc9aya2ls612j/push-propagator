@@ -20,6 +20,8 @@ cd parent
 
 REF=$(git rev-parse --short HEAD)
 
+cd ../
+
 echo the token is $GITHUB_TOKEN
 echo $ORG is the org name
 echo $REPO is the repo name
@@ -31,15 +33,8 @@ echo $GITHUB_TOKEN | gh auth login --with-token
 gh auth status
 
 FORKS=$(gh repo list $ORG --fork --json parent,name -q '.[] | select(.parent != null and .parent.name == "'$REPO'") | .name')
-echo "We have these forks: $FORKS"
 
 # Loop through the forks
 for FORK in $FORKS; do
-    echo $FORK is the current fork
-    # # if the fork is a custom
-    # if gh api /repos/$ORG/$FORK/topics --jq ".names" | grep -q custom; then
-    #     source /scripts/custom.sh
-    # else
-    #     source /scripts/standard.sh
-    # fi
+    source /scripts/update.sh
 done
