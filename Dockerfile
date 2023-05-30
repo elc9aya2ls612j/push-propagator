@@ -8,8 +8,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN mkdir /scripts
 
 # Copy all the scripts
-COPY scripts/custom.sh /scripts/custom.sh
-COPY scripts/standard.sh /scripts/standard.sh
+COPY scripts/update.sh /scripts/update.sh
 
 # Install gh, curl, jq, bash, git, openssh
 RUN apk add --no-cache curl jq bash git openssh github-cli
