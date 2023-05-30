@@ -8,34 +8,27 @@ USER_EMAIL=$5
 ORG=$(echo $GITHUB_REPOSITORY | cut -d / -f 1)
 REPO=$(echo $GITHUB_REPOSITORY | cut -d / -f 2)
 
-echo ENV VARS
-env
-
-echo GitHub CLI version
-which gh
-gh --version
-
 echo $GITHUB_TOKEN | gh auth login --with-token
 gh auth status
 
 source /scripts/build.sh
 
-cd parent
+# cd parent
 
-REF=$(git rev-parse --short HEAD)
+# REF=$(git rev-parse --short HEAD)
 
-echo $REF is the ref name
+# echo $REF is the ref name
 
-FORKS=$(gh repo list $ORG --json parent,name -q '.[] | select(.parent != null and .parent.name == "'$REPO'") | .name')
-echo "We have these forks: $FORKS"
+# FORKS=$(gh repo list $ORG --json parent,name -q '.[] | select(.parent != null and .parent.name == "'$REPO'") | .name')
+# echo "We have these forks: $FORKS"
 
-# Loop through the forks
-for FORK in $FORKS; do
-    echo $FORK is the current fork
-    # if the fork is a custom
-    if gh api /repos/$ORG/$FORK/topics --jq ".names" | grep -q custom; then
-        source /scripts/custom.sh
-    else
-        source /scripts/standard.sh
-    fi
-done
+# # Loop through the forks
+# for FORK in $FORKS; do
+#     echo $FORK is the current fork
+#     # if the fork is a custom
+#     if gh api /repos/$ORG/$FORK/topics --jq ".names" | grep -q custom; then
+#         source /scripts/custom.sh
+#     else
+#         source /scripts/standard.sh
+#     fi
+# done
