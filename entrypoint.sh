@@ -33,13 +33,13 @@ gh auth status
 FORKS=$(gh repo list $ORG --fork --json parent,name -q '.[] | select(.parent != null and .parent.name == "'$REPO'") | .name')
 echo "We have these forks: $FORKS"
 
-# # Loop through the forks
-# for FORK in $FORKS; do
-#     echo $FORK is the current fork
-#     # if the fork is a custom
-#     if gh api /repos/$ORG/$FORK/topics --jq ".names" | grep -q custom; then
-#         source /scripts/custom.sh
-#     else
-#         source /scripts/standard.sh
-#     fi
-# done
+# Loop through the forks
+for FORK in $FORKS; do
+    echo $FORK is the current fork
+    # # if the fork is a custom
+    # if gh api /repos/$ORG/$FORK/topics --jq ".names" | grep -q custom; then
+    #     source /scripts/custom.sh
+    # else
+    #     source /scripts/standard.sh
+    # fi
+done
