@@ -3,7 +3,7 @@
 GITHUB_TOKEN=$1
 NEVER_OVERWRITE=$2
 ALWAYS_OVERWRITE=$3
-STANDARD_BLOCKS=$4
+BLOCKS=$4
 USER_NAME=$5
 USER_EMAIL=$6
 ORG=$(echo $GITHUB_REPOSITORY | cut -d / -f 1)
@@ -25,7 +25,7 @@ cd ../
 
 echo never over write list: $NEVER_OVERWRITE
 echo always over write list: $ALWAYS_OVERWRITE
-echo standard blocks list: $STANDARD_BLOCKS
+echo standard blocks list: $BLOCKS
 echo the token is $GITHUB_TOKEN
 echo $ORG is the org name
 echo $REPO is the repo name

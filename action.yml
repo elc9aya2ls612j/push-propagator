@@ -11,7 +11,7 @@ inputs:
   ALWAYS_OVERWRITE:
     description: 'Files that should always be overwritten, i.e. local changes should be discarded'
     default: src/lib-franklin.js
-  STANDARD_BLOCKS:
+  BLOCKS:
     description: 'blocks that get inherited from the skeleton site'
     default:
   USER_NAME:
@@ -27,6 +27,6 @@ runs:
     - ${{ inputs.GITHUB_TOKEN }}
     - ${{ inputs.NEVER_OVERWRITE }}
     - ${{ inputs.ALWAYS_OVERWRITE }}
-    - ${{ inputs.STANDARD_BLOCKS }}
+    - ${{ inputs.BLOCKS }}
     - ${{ inputs.USER_NAME }}
     - ${{ inputs.USER_EMAIL }}
