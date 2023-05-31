@@ -20,9 +20,6 @@ inputs:
   USER_EMAIL:
     description: 'User email to be used for git commit'
     required: true
-  VERSION:
-    description: 'Latest version of the upstream'
-    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -33,4 +30,3 @@ runs:
     - ${{ inputs.BLOCKS }}
     - ${{ inputs.USER_NAME }}
     - ${{ inputs.USER_EMAIL }}
-    - ${{ inputs.VERSION }}

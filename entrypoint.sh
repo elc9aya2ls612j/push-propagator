@@ -6,7 +6,6 @@ ALWAYS_OVERWRITE=$3
 BLOCKS=$4
 USER_NAME=$5
 USER_EMAIL=$6
-VERSION=$7
 ORG=$(echo $GITHUB_REPOSITORY | cut -d / -f 1)
 REPO=$(echo $GITHUB_REPOSITORY | cut -d / -f 2)
 
@@ -21,6 +20,7 @@ git clone https://$GITHUB_TOKEN@github.com/$ORG/$REPO.git parent
 cd parent
 
 REF=$(git rev-parse --short HEAD)
+VERSION=$(grep 'version:' VERSION.txt | cut -d ' ' -f2)
 
 cd ../
 
