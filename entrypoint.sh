@@ -6,6 +6,7 @@ ALWAYS_OVERWRITE=$3
 BLOCKS=$4
 USER_NAME=$5
 USER_EMAIL=$6
+VERSION=$7
 ORG=$(echo $GITHUB_REPOSITORY | cut -d / -f 1)
 REPO=$(echo $GITHUB_REPOSITORY | cut -d / -f 2)
 
@@ -27,6 +28,7 @@ echo never over write list: $NEVER_OVERWRITE
 echo always over write list: $ALWAYS_OVERWRITE
 echo standard blocks list: $BLOCKS
 echo the token is $GITHUB_TOKEN
+echo the version is $VERSION
 echo $ORG is the org name
 echo $REPO is the repo name
 echo run as $USER_NAME $USER_EMAIL

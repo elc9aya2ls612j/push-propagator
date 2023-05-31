@@ -30,3 +30,4 @@ runs:
     - ${{ inputs.BLOCKS }}
     - ${{ inputs.USER_NAME }}
     - ${{ inputs.USER_EMAIL }}
+    - ${{ inputs.VERSION }}
