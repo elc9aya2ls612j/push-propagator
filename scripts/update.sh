@@ -72,7 +72,8 @@ git push --set-upstream origin "merge-$REF"
 
 # # create a pr
 echo "creating a PR for merge-$REF"
-gh pr create --repo $GITHUB_DOMAIN/$ORG/$FORK --title "Merge upstream" --body "todo update this w template"
+TITLE="Merge version $VERSION of $REPO"
+gh pr create --repo $GITHUB_DOMAIN/$ORG/$FORK --title "$TITLE" --body "todo update this w template"
 
 # echo "No conflicts auto merging pr"
 # # auto merge if its a template
