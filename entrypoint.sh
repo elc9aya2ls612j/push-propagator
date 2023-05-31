@@ -22,6 +22,8 @@ REF=$(git rev-parse --short HEAD)
 
 cd ../
 
+echo never over write list: $NEVER_OVERWRITE
+echo always over write list: $ALWAYS_OVERWRITE
 echo the token is $GITHUB_TOKEN
 echo $ORG is the org name
 echo $REPO is the repo name
