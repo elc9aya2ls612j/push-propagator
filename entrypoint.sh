@@ -20,7 +20,7 @@ git clone https://$GITHUB_TOKEN@github.com/$ORG/$REPO.git parent
 cd parent
 
 REF=$(git rev-parse --short HEAD)
-VERSION=$(grep 'version:' VERSION.txt | cut -d ' ' -f2)
+VERSION=$(grep "$REPO_NAME version:" VERSION.txt | cut -d ' ' -f3)
 
 cd ../
 
