@@ -72,12 +72,12 @@ git push --set-upstream origin "merge-$REF"
 
 # # create a pr
 echo "creating a PR for merge-$REF"
-TITLE="$REPO - Release: $EVENT_NAME"
+TITLE="$REPO - $EVENT_NAME"
 gh pr create --repo $GITHUB_DOMAIN/$ORG/$FORK --title "$TITLE" --body "todo update this w template"
 
 AUTO_MERGE=false
 if echo $EVENT_DESCRIPTION | grep "\[X\] Merge Automatically"; then
-    $AUTO_MERGE=true
+    AUTO_MERGE=true
 fi
 
 # auto merge if its a template
