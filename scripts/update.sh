@@ -72,14 +72,19 @@ git push --set-upstream origin "merge-$REF"
 
 # # create a pr
 echo "creating a PR for merge-$REF"
-TITLE="$REPO Version: $VERSION"
+TITLE="$REPO - $EVENT_DATA.event_name - $EVENT_DATA.event[$EVENT_DATA.event_name].name"
 gh pr create --repo $GITHUB_DOMAIN/$ORG/$FORK --title "$TITLE" --body "todo update this w template"
 
-# echo "No conflicts auto merging pr"
-# # auto merge if its a template
-# # if gh api /repos/$ORG_NAME/$FORK/topics --jq ".names" | grep template; then
-# gh pr merge "merge-$REF_NAME" --repo https://$GITHUB_TOKEN@github.com/$ORG_NAME/$FORK --squash
-# # fi
+AUTO_MERGE=false
+if echo $EVENT_DATA.event[$EVENT_DATA.event_name].body | grep "\[X\] Merge Automatically"; then
+    $AUTO_MERGE=true
+fi
+
+# auto merge if its a template
+# if gh api /repos/$ORG_NAME/$FORK/topics --jq ".names" | grep template; then
+if $AUTO_MERGE; then
+gh pr merge --admin --auto --delete-branch --merge "merge-$REF_NAME" --subject "Auto Merging $TITLE"
+fi
 
 # Go back to the parent repo
 cd .. && rm -rf $FORK
