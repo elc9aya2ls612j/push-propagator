@@ -20,8 +20,11 @@ inputs:
   USER_EMAIL:
     description: 'User email to be used for git commit'
     required: true
-  EVENT_DATA:
-    description: 'github event data'
+  EVENT_NAME:
+    description: 'github event name'
+    required: true
+  EVENT_DESCRIPTION:
+    description: 'github event description'
     required: true
 runs:
   using: 'docker'
@@ -33,4 +36,5 @@ runs:
     - ${{ inputs.BLOCKS }}
     - ${{ inputs.USER_NAME }}
     - ${{ inputs.USER_EMAIL }}
-    - ${{ inputs.EVENT_DATA }}
+    - ${{ inputs.EVENT_NAME }}
+    - ${{ inputs.EVENT_DESCRIPTION }}
