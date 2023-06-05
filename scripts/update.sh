@@ -84,7 +84,7 @@ fi
 # if gh api /repos/$ORG_NAME/$FORK/topics --jq ".names" | grep template; then
 if $AUTO_MERGE; then
     echo "we are gonna auto merge"
-    gh pr merge --admin --delete-branch --merge "merge-$REF"
+    gh pr merge --admin --delete-branch --merge --repo $GITHUB_DOMAIN/$ORG/$FORK "merge-$REF"
 fi
 
 # Go back to the parent repo
