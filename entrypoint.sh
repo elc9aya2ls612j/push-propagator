@@ -8,7 +8,8 @@ USER_NAME=$5
 USER_EMAIL=$6
 ORG=$(echo $GITHUB_REPOSITORY | cut -d / -f 1)
 REPO=$(echo $GITHUB_REPOSITORY | cut -d / -f 2)
-EVENT_DATA=$7
+EVENT_NAME=$7
+EVENT_DESCRIPTION=$8
 
 git config --global user.name "$USER_NAME"
 git config --global user.email "$USER_EMAIL"
@@ -34,7 +35,8 @@ echo $ORG is the org name
 echo $REPO is the repo name
 echo run as $USER_NAME $USER_EMAIL
 echo $REF is the ref name
-echo $EVENT_DATA
+echo $EVENT_NAME
+echo $EVENT_DESCRIPTION
 
 #auth into GitHub CLI
 echo $GITHUB_TOKEN | gh auth login --with-token
